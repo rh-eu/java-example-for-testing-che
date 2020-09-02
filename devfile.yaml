@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "name": "java-example"
+    "name": "java-ex---2"
   },
   "projects": [
     {
@@ -49,5 +49,51 @@
       ]
     }
   ],
-  "apiVersion": "1.0.0"
+  "apiVersion": "1.0.0",
+  "commands": [
+    {
+      "name": "git user",
+      "actions": [
+        {
+          "workdir": "${CHE_PROJECTS_ROOT}/java-example-for-testing-che",
+          "type": "exec",
+          "command": "git config --local user.name \"Rainer Helmes\"",
+          "component": "maven"
+        }
+      ]
+    },
+    {
+      "name": "git email",
+      "actions": [
+        {
+          "workdir": "${CHE_PROJECTS_ROOT}/java-example-for-testing-che",
+          "type": "exec",
+          "command": "git config --local user.email \"rh@mifomm.eu\"",
+          "component": "maven"
+        }
+      ]
+    },
+    {
+      "name": "maven build",
+      "actions": [
+        {
+          "workdir": "${CHE_PROJECTS_ROOT}/java-example-for-testing-che/java-example",
+          "type": "exec",
+          "command": "mvn clean install",
+          "component": "maven"
+        }
+      ]
+    },
+    {
+      "name": "maven build and run",
+      "actions": [
+        {
+          "workdir": "${CHE_PROJECTS_ROOT}/java-example-for-testing-che/java-example",
+          "type": "exec",
+          "command": "mvn clean install && java -jar ./target/*.jar",
+          "component": "maven"
+        }
+      ]
+    }
+  ]
 }
